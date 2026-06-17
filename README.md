@@ -50,20 +50,22 @@ Database dirancang menggunakan pendekatan *One-to-Many* yang dinormalisasi:
 
 ---
 
-## 🚀 Cara Menjalankan Proyek di Komputer Lokal (Localhost)
+## 🚀 Cara Menjalankan Proyek di Komputer Lokal (Laragon)
 
-1.  *Clone* repositori ini ke dalam folder server lokal Anda (misal: `htdocs` untuk XAMPP atau `www` untuk Laragon).
+1.  Buka terminal/CMD, lalu arahkan ke dalam folder root Laragon Anda (secara bawaan berada di `C:\laragon\www`).
+2.  *Clone* repositori ini langsung dengan nama folder `proyek_pw` menggunakan perintah berikut:
     ```bash
-    git clone [https://github.com/username-anda/nama-repo-anda.git](https://github.com/username-anda/nama-repo-anda.git)
+    git clone [https://github.com/adindrax-hub/tugas-pemrograman_web.git](https://github.com/adindrax-hub/tugas-pemrograman_web.git) proyek_pw
     ```
-2.  Buat database baru di phpMyAdmin/MariaDB Anda dengan nama **`db_proyek_pw`**.
-3.  Impor file skema database (misal: `db_proyek_pw.sql`) ke dalam database tersebut.
-4.  Pastikan terdapat folder bernama **`uploads`** di dalam *root* direktori proyek Anda untuk menampung file. Jika belum ada, buat foldernya secara manual atau sistem akan membuatnya otomatis.
-5.  Buka *browser* dan akses proyek melalui `http://localhost/nama-folder-proyek`.
-6.  Gunakan kredensial berikut untuk masuk (jika menggunakan data *dummy* bawaan):
-    * **Username:** admin
-    * **Password:** admin123 (jika menggunakan *hash* bawaan)
+3.  Buka aplikasi **Laragon** dan klik tombol **Start All** untuk menyalakan layanan Apache dan MySQL.
+4.  Buka **HeidiSQL** (dengan mengeklik tombol *Database* di Laragon) atau *phpMyAdmin*, lalu buat database baru dengan nama **`db_proyek_pw`**.
+5.  Impor *file* skema database (`db_proyek_pw.sql`) ke dalam database tersebut.
+6.  Pastikan terdapat folder bernama **`uploads`** di dalam folder proyek Anda (`laragon/www/proyek_pw/uploads`) untuk menampung *file*. Jika belum ada, buat foldernya secara manual.
+7.  Buka *browser* dan akses proyek melalui salah satu URL berikut:
+    * **URL Standar:** `http://localhost/proyek_pw`
+    * **URL Virtual Host Laragon:** `http://proyek_pw.test` (Jika fitur *Auto Virtual Hosts* pada Laragon Anda aktif)
+8.  Gunakan kredensial berikut untuk masuk (data bawaan dari *database* dummy):
+    * **Username:** `admin`
+    * **Password:** `admin123`
 
 ---
-
-*Dibuat untuk memenuhi Tugas Pemrograman Web Universitas Muhammadiyah Sukabumi.*
