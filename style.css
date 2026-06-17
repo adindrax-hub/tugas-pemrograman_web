@@ -1,0 +1,107 @@
+/* Pengaturan untuk Halaman Login */
+.login-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Pengaturan untuk Canvas Signature */
+.signature-wrapper {
+  position: relative;
+  border: 2px dashed #6c757d;
+  border-radius: 8px;
+  background-color: #f8f9fa; /* Latar putih agar guratan hitam terlihat */
+}
+
+#signatureCanvas {
+  width: 100%;
+  height: 200px;
+  border-radius: 6px;
+  cursor: crosshair;
+  display: block;
+}
+/* =========================================
+   TAMBAHAN FITUR ANIMASI UI/UX
+   ========================================= */
+
+/* 1. Animasi Halaman Login (Muncul perlahan dari atas) */
+@keyframes fadeSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.login-card {
+  animation: fadeSlideDown 0.8s ease-out forwards;
+}
+
+/* 2. Animasi Dashboard & Tabel (Muncul perlahan dari bawah) */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.container.mt-5 {
+  animation: fadeSlideUp 0.8s ease-out forwards;
+  opacity: 0; /* Mencegah kedipan sebelum animasi dimulai */
+}
+
+/* 3. Efek Interaktif pada Tombol (Efek Mengambang / Hover Scale) */
+.btn {
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out !important;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+.btn:active {
+  transform: translateY(1px); /* Efek ditekan */
+}
+
+/* 4. Efek Interaktif pada Baris Tabel */
+tbody tr td {
+  transition: background-color 0.3s ease !important;
+}
+tbody tr:hover td {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* 5. Animasi Interaktif Area Tanda Tangan (Glow/Menyala) */
+.signature-wrapper {
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.signature-wrapper:hover {
+  border-color: #0d6efd; /* Warna biru bootstrap */
+  box-shadow: 0 0 15px rgba(13, 110, 253, 0.3);
+}
+
+/* 6. Animasi Modal Masuk (Zoom In) */
+.modal.fade .modal-dialog {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: scale(0.9);
+}
+.modal.show .modal-dialog {
+  transform: scale(1);
+}
