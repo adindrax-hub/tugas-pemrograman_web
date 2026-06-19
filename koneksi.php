@@ -1,8 +1,11 @@
 <?php
 $host = "localhost";
-$user = "root";
-$pass = ""; // Kosongkan jika menggunakan XAMPP/Laragon default
-$db   = "db_proyek_pw";
+// Username database dari hosting kelas Anda
+$user = "ifummiid_kelasc"; 
+// Masukkan password database dari hosting kelas Anda di bawah ini
+$pass = "pemweb_db_c"; 
+// Nama database harus persis dengan yang ada di gambar kiri atas
+$db   = "ifummiid_kelasc"; 
 
 $conn = new mysqli($host, $user, $pass, $db);
 

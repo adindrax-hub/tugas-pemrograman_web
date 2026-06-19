@@ -1,107 +1,301 @@
-/* Pengaturan untuk Halaman Login */
-.login-container {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap");
+
+:root {
+  --medium-yellow: #ffc017;
+  --dark-black: #191919;
+  --pure-white: #ffffff;
 }
 
-.login-card {
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--pure-white);
+  margin: 0;
+  padding: 0;
+  color: var(--dark-black);
+  overflow-x: hidden;
+}
+
+/* =========================================
+   DASHBOARD / INDEX STYLES
+   ========================================= */
+.app-container {
   width: 100%;
-  max-width: 400px;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  max-width: 1200px;
+  background-color: var(--pure-white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: column;
+  margin: 3rem auto;
 }
 
-/* Pengaturan untuk Canvas Signature */
-.signature-wrapper {
+.navbar-top {
+  padding: 1.5rem 4rem;
+  background-color: var(--medium-yellow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--dark-black);
+  text-decoration: none;
+}
+
+.hero-section {
+  background-color: var(--medium-yellow);
+  padding: 5rem 4rem;
   position: relative;
-  border: 2px dashed #6c757d;
-  border-radius: 8px;
-  background-color: #f8f9fa; /* Latar putih agar guratan hitam terlihat */
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--dark-black);
 }
 
+.hero-content {
+  max-width: 50%;
+  z-index: 10;
+}
+
+.hero-title {
+  font-family: "Playfair Display", serif;
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--dark-black);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -2px;
+  z-index: 2;
+}
+
+.hero-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.6;
+  max-width: 90%;
+  z-index: 2;
+  margin-bottom: 2rem;
+}
+
+.btn-black-pill {
+  background-color: var(--dark-black);
+  color: var(--pure-white);
+  border: none;
+  width: 100%;
+  padding: 15px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: transform 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-black-pill:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+  color: var(--pure-white);
+}
+
+.table-section {
+  padding: 3rem 4rem;
+  background-color: #fafafa;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.table thead th {
+  border-bottom: 2px solid var(--dark-black);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #555;
+}
+.table tbody td {
+  border-bottom: 1px solid #ddd;
+  padding: 1.5rem 0.5rem;
+  vertical-align: middle;
+}
+
+/* Modal & Canvas */
+.modal-content {
+  border-radius: 16px;
+  border: 2px solid var(--dark-black);
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 1);
+}
+.modal-header {
+  border-bottom: 2px solid var(--dark-black);
+  background-color: var(--medium-yellow);
+}
+.signature-wrapper {
+  border: 2px dashed var(--dark-black);
+  border-radius: 8px;
+  background: #fff;
+  position: relative;
+}
 #signatureCanvas {
   width: 100%;
   height: 200px;
-  border-radius: 6px;
+  display: block;
   cursor: crosshair;
+}
+
+/* =========================================
+   ANIMASI HURUF MELAYANG (TERSEBAR)
+   ========================================= */
+#interactive-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.floating-letter {
+  position: absolute;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.91);
+  opacity: 0;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(50px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-150px) translateX(-50px) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   LOGIN SPLIT-SCREEN STYLES
+   ========================================= */
+.split-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.left-pane {
+  flex: 1.2;
+  background-color: var(--medium-yellow);
+  color: var(--dark-black);
+  padding: 4rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 2px solid var(--dark-black);
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-logo {
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  z-index: 2;
+  position: relative;
+}
+.hero-text-wrapper {
+  z-index: 2;
+  position: relative;
+}
+.footer-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  z-index: 2;
+  position: relative;
+}
+
+.right-pane {
+  flex: 1;
+  background-color: var(--pure-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.form-wrapper {
+  width: 100%;
+  max-width: 420px;
+}
+.form-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--dark-black);
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+.form-subtitle {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  font-weight: 500;
+}
+.custom-label {
+  font-size: 0.85rem;
+  color: var(--dark-black);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
   display: block;
 }
-/* =========================================
-   TAMBAHAN FITUR ANIMASI UI/UX
-   ========================================= */
 
-/* 1. Animasi Halaman Login (Muncul perlahan dari atas) */
-@keyframes fadeSlideDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-30px);
+.custom-input {
+  width: 100%;
+  background-color: #fafafa;
+  border: 2px solid #eaeaea;
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--dark-black);
+  margin-bottom: 1.5rem;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: var(--dark-black);
+  background-color: var(--pure-white);
+}
+.header-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 991px) {
+  .left-pane {
+    display: none;
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.login-card {
-  animation: fadeSlideDown 0.8s ease-out forwards;
-}
-
-/* 2. Animasi Dashboard & Tabel (Muncul perlahan dari bawah) */
-@keyframes fadeSlideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.container.mt-5 {
-  animation: fadeSlideUp 0.8s ease-out forwards;
-  opacity: 0; /* Mencegah kedipan sebelum animasi dimulai */
-}
-
-/* 3. Efek Interaktif pada Tombol (Efek Mengambang / Hover Scale) */
-.btn {
-  transition:
-    transform 0.2s ease-in-out,
-    box-shadow 0.2s ease-in-out !important;
-}
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-}
-.btn:active {
-  transform: translateY(1px); /* Efek ditekan */
-}
-
-/* 4. Efek Interaktif pada Baris Tabel */
-tbody tr td {
-  transition: background-color 0.3s ease !important;
-}
-tbody tr:hover td {
-  background-color: rgba(255, 255, 255, 0.08) !important;
-}
-
-/* 5. Animasi Interaktif Area Tanda Tangan (Glow/Menyala) */
-.signature-wrapper {
-  transition:
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
-}
-.signature-wrapper:hover {
-  border-color: #0d6efd; /* Warna biru bootstrap */
-  box-shadow: 0 0 15px rgba(13, 110, 253, 0.3);
-}
-
-/* 6. Animasi Modal Masuk (Zoom In) */
-.modal.fade .modal-dialog {
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transform: scale(0.9);
-}
-.modal.show .modal-dialog {
-  transform: scale(1);
 }
